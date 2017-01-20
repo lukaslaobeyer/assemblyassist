@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>assemblyassist output</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.css"/>
+    <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/DataTables/datatables.js"></script>
+
+    <style>
+        .table-div {
+            overflow: auto;
+            max-height: 100vh;
+        }
+
+        table {
+            font-family: Inconsolata, Monospaced;
+            font-size: 16px;
+        }
+
+        thead {
+            color: #000000;
+            font-weight: bold;
+        }
+
+        tbody {
+            color: #0c0c0c;
+        }
+
+        .not-placed {
+            color: #AA0000;
+        }
+
+        .placed {
+            color: #00AA00;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .insideWrapper {
+            margin-top: 20px;
+            width: 100%;
+            height: 95vh;
+            position: relative;
+        }
+
+        #board {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="col-sm-6 table-div">
+            <table class="table" id="components">
+                <thead>
+                    <tr>
+                        <th>Placed</th>
+                        <th>Part number</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Location</th>
+                        <th>Designators</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for (pn, description, location), components in components.items() %}
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>{{ pn }}</td>
+                        <td>{{ description }}</td>
+                        <td>{{ components|length }}</td>
+                        <td>{{ location }}</td>
+                        <td>
+                            <ul>
+                                {% for component in components %}
+                                <li><a href="#{{ component['pnp']['x'] }};{{ component['pnp']['y'] }}">{{ component['designator'] }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div class="insideWrapper">
+                <img src="{{ board_img }}" id="board">
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var table = $('#components').dataTable({
+                paging: false,
+                fixedHeader: true
+            });
+
+            table.fnSort([[5,'asc']]);
+
+            $('.checkbox').click(function () {
+                var checked = $('input', this).is(':checked');
+                if(checked) {
+                    $('label', this).removeClass("not-placed").addClass("placed");
+                } else {
+                    $('label', this).removeClass("placed").addClass("not-placed");
+                }
+            });
+        });
+
+        $(window).on('hashchange', function(e) {
+            var coords = location.hash.substring(1).split(";");
+            var x = parseFloat(coords[0]);
+            var y = parseFloat(coords[1]);
+
+            var canvas = document.getElementById('canvas');
+
+            var img = document.getElementById('board');
+
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                x =  (x+{{ config['offset_x'] }})/({{ config.width }}/img.clientWidth);
+                y = -(y+{{ config['offset_y'] }})/({{ config.width }}/img.clientWidth);
+
+                {% if config['flip_x'] %}
+                x = -x;
+                {% endif %}
+                {% if config['flip_y'] %}
+                y = -y;
+                {% endif %}
+
+                ctx.canvas.height = img.clientHeight;
+                ctx.canvas.width = img.clientWidth;
+
+                ctx.fillStyle = '#ff0000';
+                ctx.fillRect(x-15,y-15,30,30);
+                ctx.clearRect(x-10,y-10,20,20);
+            }
+        });
+    </script>
+</body>
+</html>

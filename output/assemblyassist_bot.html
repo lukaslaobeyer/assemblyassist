@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>assemblyassist output</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.css"/>
+    <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/DataTables/datatables.js"></script>
+
+    <style>
+        .table-div {
+            overflow: auto;
+            max-height: 100vh;
+        }
+
+        table {
+            font-family: Inconsolata, Monospaced;
+            font-size: 16px;
+        }
+
+        thead {
+            color: #000000;
+            font-weight: bold;
+        }
+
+        tbody {
+            color: #0c0c0c;
+        }
+
+        .not-placed {
+            color: #AA0000;
+        }
+
+        .placed {
+            color: #00AA00;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .insideWrapper {
+            margin-top: 20px;
+            width: 100%;
+            height: 95vh;
+            position: relative;
+        }
+
+        #board {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="col-sm-6 table-div">
+            <table class="table" id="components">
+                <thead>
+                    <tr>
+                        <th>Placed</th>
+                        <th>Part number</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Location</th>
+                        <th>Designators</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL10F104ZB8NNNC</td>
+                        <td>CAPACITOR 0603 CERAMIC</td>
+                        <td>6</td>
+                        <td>B26</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#4073.926;-1337.256">C16</a></li>
+                                
+                                <li><a href="#214.733;-1889.481">C82</a></li>
+                                
+                                <li><a href="#138.611;-1042.493">C87</a></li>
+                                
+                                <li><a href="#2016.953;-1131.082">C140</a></li>
+                                
+                                <li><a href="#2183.996;-2076.772">C173</a></li>
+                                
+                                <li><a href="#489.232;-2112.205">C174</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>RC0603JR-0710KL</td>
+                        <td>RESISTOR 0603</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#270.564;-2219.123">R8</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>RC1005F1432CS</td>
+                        <td>RESISTOR 0402</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#3935.996;-1681.634">R4</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CBR04C101F3GAC</td>
+                        <td>CAPACITOR 0402 CERAMIC</td>
+                        <td>5</td>
+                        <td>D16</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#3863.232;-2257.327">C152</a></li>
+                                
+                                <li><a href="#3881.232;-2063.827">C153</a></li>
+                                
+                                <li><a href="#4105.232;-831.327">C154</a></li>
+                                
+                                <li><a href="#3987.633;-872.681">C170</a></li>
+                                
+                                <li><a href="#3948.611;-2339.166">C171</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>TXS0108ERGYR</td>
+                        <td>LEVEL SHIFTER</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#2362.205;-2151.575">U6</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL05A225MQ5NNNC</td>
+                        <td>CAPACITOR 0402 CERAMIC 6.3V X5R/X7R</td>
+                        <td>3</td>
+                        <td>C02</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#580.225;-1386.056">C73</a></li>
+                                
+                                <li><a href="#527.233;-1534.481">C75</a></li>
+                                
+                                <li><a href="#647.233;-1674.481">C77</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>MCR03ERTJ104</td>
+                        <td>RESISTOR 0603</td>
+                        <td>1</td>
+                        <td>C07</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#339.733;-1889.481">R5</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL05A475MQ5NRNC</td>
+                        <td>CAPACITOR 0402 CERAMIC</td>
+                        <td>10</td>
+                        <td>B11</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#2407.319;-1839.877">C89</a></li>
+                                
+                                <li><a href="#2816.17;-1454.52">C90</a></li>
+                                
+                                <li><a href="#2460.934;-1031.174">C91</a></li>
+                                
+                                <li><a href="#2404.438;-1031.174">C92</a></li>
+                                
+                                <li><a href="#2004.319;-1575.386">C93</a></li>
+                                
+                                <li><a href="#2816.957;-1535.229">C94</a></li>
+                                
+                                <li><a href="#1983.847;-1272.434">C120</a></li>
+                                
+                                <li><a href="#2486.327;-1700.701">C121</a></li>
+                                
+                                <li><a href="#2503.697;-1158.578">C126</a></li>
+                                
+                                <li><a href="#2129.366;-1595.901">C127</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>BLM21AG601SN1D</td>
+                        <td>FERRITE BEAD 0805</td>
+                        <td>1</td>
+                        <td>D05</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#4038.493;-1623.142">FB8</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>7S-19.200MAHE-T</td>
+                        <td>XTAL</td>
+                        <td>1</td>
+                        <td>C16</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#695.273;-1071.766">X2</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>1622826-4</td>
+                        <td>RESISTOR 0402</td>
+                        <td>2</td>
+                        <td>B28</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#3943.555;-1570.729">R3</a></li>
+                                
+                                <li><a href="#2391.732;-2308.74">R40</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL05A106MR5NRNC</td>
+                        <td>CAPACITOR 0402 CERAMIC</td>
+                        <td>2</td>
+                        <td>C29</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#3785.2;-1781.938">C49</a></li>
+                                
+                                <li><a href="#3883.161;-1776.438">C50</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL05A474KQ5NNNC</td>
+                        <td>CAPACITOR 0402 CERAMIC</td>
+                        <td>16</td>
+                        <td>B12</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#2410.661;-1504.167">C95</a></li>
+                                
+                                <li><a href="#2410.661;-1584.876">C96</a></li>
+                                
+                                <li><a href="#2410.661;-1666.569">C97</a></li>
+                                
+                                <li><a href="#2410.661;-1387.041">C98</a></li>
+                                
+                                <li><a href="#2262.24;-1841.058">C99</a></li>
+                                
+                                <li><a href="#2534.523;-1458.106">C100</a></li>
+                                
+                                <li><a href="#2471.926;-1363.859">C101</a></li>
+                                
+                                <li><a href="#2818.854;-1331.294">C102</a></li>
+                                
+                                <li><a href="#2357.979;-1210.698">C122</a></li>
+                                
+                                <li><a href="#2550.863;-1363.449">C123</a></li>
+                                
+                                <li><a href="#2354.406;-1531.26">C124</a></li>
+                                
+                                <li><a href="#2315.036;-1373.78">C125</a></li>
+                                
+                                <li><a href="#2332.437;-1734.996">C128</a></li>
+                                
+                                <li><a href="#2704.799;-1299.641">C129</a></li>
+                                
+                                <li><a href="#2653.615;-1624.444">C130</a></li>
+                                
+                                <li><a href="#2180.547;-1270.114">C131</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL10B102KB8NNNC</td>
+                        <td>CAPACITOR 0603 CERAMIC</td>
+                        <td>6</td>
+                        <td>C28</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#4129.044;-1337.256">C15</a></li>
+                                
+                                <li><a href="#3939.232;-876.827">C25</a></li>
+                                
+                                <li><a href="#4091.732;-985.827">C26</a></li>
+                                
+                                <li><a href="#3791.933;-2201.796">C27</a></li>
+                                
+                                <li><a href="#3939.232;-2388.327">C28</a></li>
+                                
+                                <li><a href="#3845.133;-2140.781">C29</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>BLM21PG221SN1D</td>
+                        <td>FERRITE BEAD 0805</td>
+                        <td>1</td>
+                        <td>B29</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#225.225;-1048.93">FB5</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>N25Q128A11ESE40G</td>
+                        <td>FLASH SPI</td>
+                        <td>1</td>
+                        <td>N/A</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#666.339;-2053.15">U12</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>MCR03ERTJ102</td>
+                        <td>RESISTOR 0603</td>
+                        <td>4</td>
+                        <td>B19</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#1723.733;-822.327">R23</a></li>
+                                
+                                <li><a href="#1773.733;-822.327">R32</a></li>
+                                
+                                <li><a href="#1873.732;-822.327">R34</a></li>
+                                
+                                <li><a href="#2023.732;-822.327">R35</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL10F474ZB8NNNC</td>
+                        <td>CAPACITOR 0603 CERAMIC</td>
+                        <td>2</td>
+                        <td>B14</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#2010.402;-1370.465">C104</a></li>
+                                
+                                <li><a href="#2312.633;-1923.558">C105</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>GRM188C80G106KE47D</td>
+                        <td>CAPACITOR 0603 CERAMIC</td>
+                        <td>4</td>
+                        <td>A10</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#4017.823;-1337.256">C17</a></li>
+                                
+                                <li><a href="#4103.453;-1601.902">C20</a></li>
+                                
+                                <li><a href="#4153.543;-1651.516">C183</a></li>
+                                
+                                <li><a href="#4073.001;-1518.3">C184</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>SiT8008AI-22-18E-100.000000G</td>
+                        <td>XTAL OSCILLATOR</td>
+                        <td>1</td>
+                        <td>B23</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#2014.326;-1022.869">X3</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>MCR03ERTJ242</td>
+                        <td>RESISTOR 0603</td>
+                        <td>1</td>
+                        <td>B16</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#1904.151;-1185.634">R16</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>MCR03ERTJ472</td>
+                        <td>RESISTOR 0603</td>
+                        <td>3</td>
+                        <td>B17</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#1912.237;-1244.657">R17</a></li>
+                                
+                                <li><a href="#1800.458;-1095.311">R18</a></li>
+                                
+                                <li><a href="#1890.389;-1021.787">R22</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>MCR01MZPFL1R00</td>
+                        <td>RESISTOR 0402</td>
+                        <td>1</td>
+                        <td>C24</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#3722.869;-1813.383">R2</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>MPZ2012S601A</td>
+                        <td>FERRITE BEAD 0805</td>
+                        <td>4</td>
+                        <td>N/A</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#525.894;-1328.969">FB1</a></li>
+                                
+                                <li><a href="#452.233;-1674.481">FB2</a></li>
+                                
+                                <li><a href="#538.233;-1695.481">FB3</a></li>
+                                
+                                <li><a href="#428.525;-1406.285">FB9</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>GRM155R61C104KA88J</td>
+                        <td>CAPACITOR 0402 CERAMIC</td>
+                        <td>12</td>
+                        <td>N/A</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#3599.381;-1709.823">C34</a></li>
+                                
+                                <li><a href="#3640.783;-1709.823">C36</a></li>
+                                
+                                <li><a href="#3944.185;-1614.036">C37</a></li>
+                                
+                                <li><a href="#3489.727;-1504.241">C40</a></li>
+                                
+                                <li><a href="#3439.227;-1417.241">C41</a></li>
+                                
+                                <li><a href="#3432.727;-1463.741">C42</a></li>
+                                
+                                <li><a href="#3789.027;-1730.178">C43</a></li>
+                                
+                                <li><a href="#3871.35;-1730.178">C45</a></li>
+                                
+                                <li><a href="#922.233;-1209.481">C55</a></li>
+                                
+                                <li><a href="#599.91;-1429.363">C74</a></li>
+                                
+                                <li><a href="#497.233;-1579.481">C76</a></li>
+                                
+                                <li><a href="#602.233;-1664.481">C78</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL05A105JQ5NNNC</td>
+                        <td>CAPACITOR 0402 CERAMIC</td>
+                        <td>1</td>
+                        <td>C21</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#3728.727;-1706.741">C2</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL05C120JB5NNNC</td>
+                        <td>CAPACITOR 0402 CERAMIC</td>
+                        <td>2</td>
+                        <td>C04</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#840.233;-996.481">C80</a></li>
+                                
+                                <li><a href="#550.233;-1055.481">C81</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>CL05B103KA5NNNC</td>
+                        <td>CAPACITOR 0402 CERAMIC</td>
+                        <td>4</td>
+                        <td>C01</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#706.161;-1604.694">C57</a></li>
+                                
+                                <li><a href="#862.233;-1210.481">C64</a></li>
+                                
+                                <li><a href="#832.233;-1687.481">C66</a></li>
+                                
+                                <li><a href="#792.233;-1687.481">C68</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="checkbox not-placed">
+                                <label>
+                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td>MCR03ERTJ331</td>
+                        <td>RESISTOR 0603</td>
+                        <td>6</td>
+                        <td>B18</td>
+                        <td>
+                            <ul>
+                                
+                                <li><a href="#1676.724;-1177.509">R19</a></li>
+                                
+                                <li><a href="#3966.232;-956.827">R29</a></li>
+                                
+                                <li><a href="#3914.232;-2225.327">R30</a></li>
+                                
+                                <li><a href="#3854.732;-907.327">R37</a></li>
+                                
+                                <li><a href="#3884.732;-1956.827">R38</a></li>
+                                
+                                <li><a href="#4149.732;-2149.327">R39</a></li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div class="insideWrapper">
+                <img src="board_bottom.png" id="board">
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var table = $('#components').dataTable({
+                paging: false,
+                fixedHeader: true
+            });
+
+            table.fnSort([[5,'asc']]);
+
+            $('.checkbox').click(function () {
+                var checked = $('input', this).is(':checked');
+                if(checked) {
+                    $('label', this).removeClass("not-placed").addClass("placed");
+                } else {
+                    $('label', this).removeClass("placed").addClass("not-placed");
+                }
+            });
+        });
+
+        $(window).on('hashchange', function(e) {
+            var coords = location.hash.substring(1).split(";");
+            var x = parseFloat(coords[0]);
+            var y = parseFloat(coords[1]);
+
+            var canvas = document.getElementById('canvas');
+
+            var img = document.getElementById('board');
+
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                x =  (x+0)/(4251.969/img.clientWidth);
+                y = -(y+0)/(4251.969/img.clientWidth);
+
+                
+                
+
+                ctx.canvas.height = img.clientHeight;
+                ctx.canvas.width = img.clientWidth;
+
+                ctx.fillStyle = '#ff0000';
+                ctx.fillRect(x-15,y-15,30,30);
+                ctx.clearRect(x-10,y-10,20,20);
+            }
+        });
+    </script>
+</body>
+</html>
