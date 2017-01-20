@@ -15,8 +15,8 @@
         }
 
         table {
-            font-family: Inconsolata, Monospaced;
-            font-size: 16px;
+            font-family: Inconsolata, Monospace;
+            font-size: 18px;
         }
 
         thead {
@@ -88,7 +88,7 @@
                         <td>
                             <ul>
                                 {% for component in components %}
-                                <li><a href="#{{ component['pnp']['x'] }};{{ component['pnp']['y'] }}">{{ component['designator'] }}</a></li>
+                                <li><a href="#{{ component['pnp']['x'] }};{{ component['pnp']['y'] }}" class="not-placed">{{ component['designator'] }}</a></li>
                                 {% endfor %}
                             </ul>
                         </td>
@@ -118,8 +118,10 @@
                 var checked = $('input', this).is(':checked');
                 if(checked) {
                     $('label', this).removeClass("not-placed").addClass("placed");
+                    $('label', this).parent().parent().parent().find("a").removeClass("not-placed").addClass("placed");
                 } else {
                     $('label', this).removeClass("placed").addClass("not-placed");
+                    $('label', this).parent().parent().parent().find("a").removeClass("placed").addClass("not-placed");
                 }
             });
         });
