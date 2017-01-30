@@ -12,10 +12,9 @@ It needs 3 CSV files:
 
 You should also give it pictures of your board's top and bottom layers.
 
-Example Input data is given in the `input` directory
+Example input data is given in the `input` directory
 
 
 # Use It!
-Adjust settings in `settings.py`, run `./assemblyassist.py`, and open the HTML files generated in the output directory. Done.
-
-Moreover, the status of placement for the components will be stored persistently in your browser.
+Adjust settings in `settings.py`, run `./assemblyassist.py`, and open the HTML files generated in the output directory.
+The status of placement for the components will be stored persistently in your browser.
