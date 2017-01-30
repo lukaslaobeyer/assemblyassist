@@ -2,11 +2,16 @@
 <html>
 <head>
     <title>assemblyassist output</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="js/DataTables/datatables.css"/>
-    <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/DataTables/datatables.js"></script>
+
+    <style>
+        {% include "css/bootstrap.css" %}
+        {% include "css/datatables.css" %}
+    </style>
+    <script>
+        {% include "js/jquery-2.2.4.js" %}
+        {% include "js/bootstrap.js" %}
+        {% include "js/datatables.js" %}
+    </script>
 
     <style>
         .table-div {
@@ -54,6 +59,32 @@
             width: 100%;
             top: 0;
             left: 0;
+        }
+
+        label {
+            width: 100px;
+        }
+
+        th:nth-child(2) {
+            min-width: 175px !important;
+        }
+
+        .col-md-6 {
+            width: 50%;
+            float: left;
+        }
+
+        #components_wrapper > .row:first-child > .col-sm-6 {
+            width: 100%;
+        }
+
+        div.dataTables_filter {
+            text-align: left !important;
+            padding-left: 270px;
+        }
+
+        input[type=search] {
+            width: 120px !important;
         }
     </style>
 </head>

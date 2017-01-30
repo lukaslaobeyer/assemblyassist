@@ -1,8 +1,15 @@
-import sys
+#!/usr/bin/env python3
+
+import base64
 import csv
-import config
 import itertools
-from jinja2 import Template
+import os
+import sys
+
+from jinja2 import Environment, FileSystemLoader, Template
+
+from input import config
+
 
 def match_xy(designator, xylist):
     for line in xylist:
@@ -101,12 +108,17 @@ if __name__ == '__main__':
         sys.exit()
 
     try:
-        templatefile = open(config.config['template'], 'r')
-        templatestr = templatefile.read()
+        j2_env = Environment(loader=FileSystemLoader(config.config['templatedir']),
+                             trim_blocks=True)
+
+        if not os.path.exists(os.path.dirname(config.config['output_top'])):
+            os.makedirs(os.path.dirname(config.config['output_top']))
         outputfile_top = open(config.config['output_top'], 'w')
+        if not os.path.exists(os.path.dirname(config.config['output_bottom'])):
+            os.makedirs(os.path.dirname(open(config.config['output_bottom'])))
         outputfile_bot = open(config.config['output_bottom'], 'w')
     except (OSError, IOError) as e:
-        print('error: could not open template file: {}'.format(e))
+        print('error: could not open file: {}'.format(e))
         sys.exit()
 
     xyreader = csv.reader(xyfile, delimiter=config.config['delimiter'], quotechar=config.config['quotechar'])
@@ -132,11 +144,17 @@ if __name__ == '__main__':
     print('DONE')
     print('----')
 
-    template = Template(templatestr)
-    rendered = template.render(components=components_top, board_img=config.config['graphics']['image_top'], config=config.config['graphics'])
+    template = j2_env.get_template('template.html')
+    rendered = template.render(components=components_top,
+                               board_img="data:image/png;base64," + base64.b64encode(open(
+                                   config.config['graphics']['image_top'], "rb").read()).decode('ascii'),
+                               config=config.config['graphics'])
     outputfile_top.write(rendered)
     print('{} written'.format(config.config['output_top']))
 
-    rendered = template.render(components=components_bottom, board_img=config.config['graphics']['image_bottom'], config=config.config['graphics'])
+    rendered = template.render(components=components_bottom,
+                               board_img="data:image/png;base64," + base64.b64encode(open(
+                                   config.config['graphics']['image_bottom'], "rb").read()).decode('ascii'),
+                               config=config.config['graphics'])
     outputfile_bot.write(rendered)
     print('{} written'.format(config.config['output_bottom']))
