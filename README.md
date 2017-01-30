@@ -1,6 +1,6 @@
 # AssemblyAssist
 
-![Screenshot of the thing](assemblyassist.png)
+![Screenshot of the AssemblyAssist](assemblyassist.png)
 
 This was thrown together in one evening. Don't expect much. However, it *does* accomplish its simple goal: providing component placement information in a more user-friendly and effective way than printed out spreadsheets.
 
@@ -12,6 +12,10 @@ It needs 3 CSV files:
 
 You should also give it pictures of your board's top and bottom layers.
 
-Adjust settings in `settings.py`, run `python3 gen.py`, and open the HTML files generated in the output directory. Done.
+Example Input data is given in the `input` directory
 
-Also, the status of placement for the components will be stored persistently in your browser.
+
+# Use It!
+Adjust settings in `settings.py`, run `./assemblyassist.py`, and open the HTML files generated in the output directory. Done.
+
+Moreover, the status of placement for the components will be stored persistently in your browser.

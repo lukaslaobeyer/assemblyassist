@@ -1,5 +1,5 @@
 config = {
-    'template': 'template.html',
+    'templatedir': 'template/',
     'output_top': 'output/assemblyassist_top.html',
     'output_bottom': 'output/assemblyassist_bot.html',
     'delimiter': ',', # CSV delimiter
