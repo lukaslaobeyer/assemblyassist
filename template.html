@@ -73,11 +73,11 @@
                 </thead>
                 <tbody>
                     {% for (pn, description, location), components in components.items() %}
-                    <tr>
+                    <tr data-part-number="{{ pn }}">
                         <td>
                             <div class="checkbox not-placed">
                                 <label>
-                                    <input type="checkbox">&nbsp;<span>Placed</span>
+                                    <input class="checkbox-placed" type="checkbox">&nbsp;<span>Placed</span>
                                 </label>
                             </div>
                         </td>
@@ -112,18 +112,29 @@
                 fixedHeader: true
             });
 
-            table.fnSort([[5,'asc']]);
-
             $('.checkbox').click(function () {
                 var checked = $('input', this).is(':checked');
                 if(checked) {
                     $('label', this).removeClass("not-placed").addClass("placed");
                     $('label', this).parent().parent().parent().find("a").removeClass("not-placed").addClass("placed");
+                    var pn = $('label', this).parent().parent().parent().attr("data-part-number");
+                    localStorage.setItem(pn, '');
                 } else {
                     $('label', this).removeClass("placed").addClass("not-placed");
                     $('label', this).parent().parent().parent().find("a").removeClass("placed").addClass("not-placed");
+                    var pn = $('label', this).parent().parent().parent().attr("data-part-number");
+                    if(localStorage.getItem(pn) != null) {
+                        localStorage.removeItem(pn);
+                    }
                 }
             });
+
+            for(var pn in localStorage) {
+                $("#components").find("[data-part-number='" + pn + "']").find(".checkbox-placed").prop("checked", true);
+                $("#components").find("[data-part-number='" + pn + "']").find(".checkbox").trigger("click");
+            }
+
+            table.fnSort([[5, 'asc']]);
         });
 
         $(window).on('hashchange', function(e) {
