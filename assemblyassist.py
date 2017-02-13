@@ -148,13 +148,15 @@ if __name__ == '__main__':
     rendered = template.render(components=components_top,
                                board_img="data:image/png;base64," + base64.b64encode(open(
                                    config.config['graphics']['image_top'], "rb").read()).decode('ascii'),
-                               config=config.config['graphics'])
+                               config=config.config['graphics'],
+                               mirror='false')
     outputfile_top.write(rendered)
     print('{} written'.format(config.config['output_top']))
 
     rendered = template.render(components=components_bottom,
                                board_img="data:image/png;base64," + base64.b64encode(open(
                                    config.config['graphics']['image_bottom'], "rb").read()).decode('ascii'),
-                               config=config.config['graphics'])
+                               config=config.config['graphics'],
+                               mirror='true')
     outputfile_bot.write(rendered)
     print('{} written'.format(config.config['output_bottom']))

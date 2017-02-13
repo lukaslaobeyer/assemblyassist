@@ -93,6 +93,14 @@
         <div class="col-sm-6 table-div">
             <table class="table" id="components">
                 <thead>
+                    <!--<tr id="search">
+                        <th>Placed</th>
+                        <th>Part number</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Location</th>
+                        <th>Designators</th>
+                    </tr>-->
                     <tr>
                         <th>Placed</th>
                         <th>Part number</th>
@@ -108,7 +116,7 @@
                         <td>
                             <div class="checkbox not-placed">
                                 <label>
-                                    <input class="checkbox-placed" type="checkbox">&nbsp;<span>Placed</span>
+                                    <input class="checkbox-placed" type="checkbox">&nbsp;<span>Unplaced</span>
                                 </label>
                             </div>
                         </td>
@@ -138,20 +146,45 @@
 
     <script>
         $(document).ready(function() {
+            if({{ mirror }}) {
+                var img = document.getElementById('board');
+                img.style.transform = "scale(-1, 1)";
+            }
+
+
+            $('#search th').each(function() {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search '+title+'" />');
+            });
+
             var table = $('#components').dataTable({
                 paging: false,
                 fixedHeader: true
             });
 
+            // Apply the search
+            /*table.api().columns().every(function() {
+                var that = this;
+                print
+                $('#search th input').on('keyup change', function() {
+                    console.log(that.index());
+                    if(that.search() !== this.value) {
+                        table.api().column(that.index()).search(this.value).draw();
+                    }
+                });
+            });*/
+
             $('.checkbox').click(function () {
                 var checked = $('input', this).is(':checked');
                 if(checked) {
                     $('label', this).removeClass("not-placed").addClass("placed");
+                    $('label span', this).text("Placed");
                     $('label', this).parent().parent().parent().find("a").removeClass("not-placed").addClass("placed");
                     var pn = $('label', this).parent().parent().parent().attr("data-part-number");
                     localStorage.setItem(pn, '');
                 } else {
                     $('label', this).removeClass("placed").addClass("not-placed");
+                    $('label span', this).text("Unplaced");
                     $('label', this).parent().parent().parent().find("a").removeClass("placed").addClass("not-placed");
                     var pn = $('label', this).parent().parent().parent().attr("data-part-number");
                     if(localStorage.getItem(pn) != null) {
@@ -189,6 +222,10 @@
                 {% if config['flip_y'] %}
                 y = -y;
                 {% endif %}
+
+                if({{ mirror }}) {
+                    x = ctx.canvas.width - x;
+                }
 
                 ctx.canvas.height = img.clientHeight;
                 ctx.canvas.width = img.clientWidth;

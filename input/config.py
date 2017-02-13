@@ -24,8 +24,8 @@ config = {
     'inventory': {
         'file': 'input/inventory.csv', # Filename of CSV file containing component location in inventory
         'rd_start': 1, # Index of line to start reading at (0-indexed)
-        'pn_col': 1, # Part number column index
-        'location_col': 0, # Part inventory location column index
+        'pn_col': 0, # Part number column index
+        'location_col': 6, # Part inventory location column index
     },
     'graphics': {
         'offset_x': 0, # X coordinate of the origin for the PnP xy file
